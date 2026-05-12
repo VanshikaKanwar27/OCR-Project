@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import NamedTuple
 
 import cv2
 import numpy as np
@@ -8,22 +9,38 @@ import numpy as np
 from ocr_project.solver import Match
 
 
-def _grid_centers(image: np.ndarray, rows: int, cols: int) -> dict[tuple[int, int], tuple[int, int]]:
-    height, width = image.shape[:2]
+class GridBox(NamedTuple):
+    left: int
+    top: int
+    right: int
+    bottom: int
+
+
+def _grid_centers(grid_box: GridBox, rows: int, cols: int) -> dict[tuple[int, int], tuple[int, int]]:
+    width = grid_box.right - grid_box.left
+    height = grid_box.bottom - grid_box.top
     cell_h = height / rows
     cell_w = width / cols
     centers: dict[tuple[int, int], tuple[int, int]] = {}
     for row in range(rows):
         for col in range(cols):
-            x = int((col + 0.5) * cell_w)
-            y = int((row + 0.5) * cell_h)
+            x = int(grid_box.left + (col + 0.5) * cell_w)
+            y = int(grid_box.top + (row + 0.5) * cell_h)
             centers[(row, col)] = (x, y)
     return centers
 
 
-def draw_matches(image: np.ndarray, grid: list[list[str]], matches: list[Match]) -> np.ndarray:
+def draw_matches(
+    image: np.ndarray,
+    grid: list[list[str]],
+    matches: list[Match],
+    grid_box: GridBox | None = None,
+) -> np.ndarray:
     canvas = image.copy()
-    centers = _grid_centers(canvas, len(grid), len(grid[0]))
+    if grid_box is None:
+        height, width = canvas.shape[:2]
+        grid_box = GridBox(0, 0, width, height)
+    centers = _grid_centers(grid_box, len(grid), len(grid[0]))
     colors = [
         (0, 255, 0),
         (255, 0, 0),

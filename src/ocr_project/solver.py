@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass
 
 
@@ -32,9 +33,10 @@ def normalize_grid(rows: list[str]) -> Grid:
     if not normalized:
         raise ValueError("The OCR grid is empty.")
 
-    width = len(normalized[0])
+    lengths = [len(row) for row in normalized]
+    width = Counter(lengths).most_common(1)[0][0]
     if any(len(row) != width for row in normalized):
-        raise ValueError("The recognized grid rows do not have a consistent width.")
+        normalized = [row[:width].ljust(width, "X") for row in normalized]
     return [list(row) for row in normalized]
 
 

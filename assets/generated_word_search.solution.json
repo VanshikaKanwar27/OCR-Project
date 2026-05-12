@@ -1,0 +1,44 @@
+{
+  "grid_bbox": [36, 126, 876, 966],
+  "grid_rows": [
+    "YVQCFOWVEIRBRFU",
+    "AVOYELISESNECJO",
+    "OILALFMZICVFPLQ",
+    "BSQHFGAYXLTPRCS",
+    "KIKYBMGKONUODJE",
+    "IOZRWWESOCJOROA",
+    "JNQDSAJHGYPRRVR",
+    "DASBLZTGJWTDBLC",
+    "RNNXOYXAFLXATEH",
+    "GHMSPGPUZZLEXTK",
+    "MCLBCFCCJHEOTTP",
+    "GDHTLRIAVPFJREO",
+    "GRNZJVIGQZEWWRK",
+    "SWIBHDPPTTTWCHN",
+    "KJBDEDMCTLGFYRX"
+  ],
+  "words": [
+    "PYTHON",
+    "VISION",
+    "SEARCH",
+    "LETTER",
+    "PUZZLE",
+    "GRID",
+    "SOLVER",
+    "IMAGE",
+    "VECTOR",
+    "SCRIPT"
+  ],
+  "placements": {
+    "PYTHON": [[9, 4], [8, 5], [7, 6], [6, 7], [5, 8], [4, 9]],
+    "VISION": [[1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1]],
+    "SEARCH": [[3, 14], [4, 14], [5, 14], [6, 14], [7, 14], [8, 14]],
+    "LETTER": [[7, 13], [8, 13], [9, 13], [10, 13], [11, 13], [12, 13]],
+    "PUZZLE": [[9, 6], [9, 7], [9, 8], [9, 9], [9, 10], [9, 11]],
+    "SOLVER": [[5, 7], [4, 8], [3, 9], [2, 10], [1, 11], [0, 12]],
+    "VECTOR": [[0, 7], [1, 8], [2, 9], [3, 10], [4, 11], [5, 12]],
+    "SCRIPT": [[9, 3], [10, 4], [11, 5], [12, 6], [13, 7], [14, 8]],
+    "IMAGE": [[1, 6], [2, 6], [3, 6], [4, 6], [5, 6]],
+    "GRID": [[11, 0], [12, 1], [13, 2], [14, 3]]
+  }
+}
